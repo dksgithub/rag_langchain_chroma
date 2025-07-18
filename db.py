@@ -1,5 +1,5 @@
 import chromadb
-from chromadb.utils import embedding_functions
+#from chromadb.utils import embedding_functions
 
 def get_chroma_collection():
     client = chromadb.Client()
@@ -10,5 +10,5 @@ def store_documents(collection, documents, embeddings):
     collection.add(
         documents=documents,
         embeddings=embeddings,
-        ids=[f"doc_{{i}}" for i in range(len(documents))]
+        ids=[f"doc_{i}" for i in range(len(documents))]  # Fixed f-string formatting
     )
