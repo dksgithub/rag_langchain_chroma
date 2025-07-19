@@ -7,4 +7,6 @@ chromadb
 sentence-transformers
 openai
 huggingface-hub
+langchain-google-genai
+google-generativeai
 

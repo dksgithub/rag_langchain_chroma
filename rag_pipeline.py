@@ -3,6 +3,7 @@ from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 from langchain_openai import OpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 def build_retriever():
     embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
@@ -12,6 +13,7 @@ def build_retriever():
 
 def build_qa_chain():
     retriever = build_retriever()
-    llm = OpenAI(temperature=0.75) # Set temperature to 0 for deterministic output
+    #llm = OpenAI(temperature=0.75) # Set temperature to 0 for deterministic output
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.75)
     chain = RetrievalQA.from_chain_type(llm=llm, retriever=retriever, return_source_documents=True)
     return chain
