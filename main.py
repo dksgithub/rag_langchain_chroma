@@ -21,8 +21,9 @@ def main():
         result = qa_chain({"query": query})
         print("\nAnswer:", result["result"])
         print("Top Docs:")
-        for doc in result["source_documents"]:
-            print("-", doc.page_content)
+        if "source_documents" in result:
+            for doc in result["source_documents"]:
+                print("-", doc.page_content)
 
 if __name__ == "__main__":
     main()

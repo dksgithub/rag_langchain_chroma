@@ -12,6 +12,6 @@ def build_retriever():
 
 def build_qa_chain():
     retriever = build_retriever()
-    llm = OpenAI(temperature=0)
+    llm = OpenAI(temperature=0.75) # Set temperature to 0 for deterministic output
     chain = RetrievalQA.from_chain_type(llm=llm, retriever=retriever, return_source_documents=True)
     return chain
