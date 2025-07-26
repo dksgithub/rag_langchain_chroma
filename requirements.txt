@@ -9,4 +9,4 @@ openai
 huggingface-hub
 langchain-google-genai
 google-generativeai
-
+langchain_prompts

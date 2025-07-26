@@ -2,6 +2,12 @@ from documents import documents
 from embedding import embed_texts
 from db import get_chroma_collection, store_documents
 from rag_pipeline import build_qa_chain
+from dotenv import load_dotenv
+
+from promptest import build_qa_chain_with_custom_prompt
+
+
+load_dotenv()
 
 def main():
     print("Embedding documents...")
@@ -12,7 +18,8 @@ def main():
     store_documents(collection, documents, embeddings)
 
     print("Building QA Chain...")
-    qa_chain = build_qa_chain()
+    #qa_chain = build_qa_chain()
+    qa_chain = build_qa_chain_with_custom_prompt()
 
     while True:
         query = input("\nAsk a question (or type 'exit'): ")
